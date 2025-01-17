@@ -4,22 +4,50 @@ import { UserDto } from './user.dto';
 import { JwtService } from '@nestjs/jwt';
 
 const users = [
-  { username: 'guang', password: '111111', email: 'xxx@xxx.com' },
-  { username: 'dong', password: '222222', email: 'yyy@yyy.com' },
+  { username: 'uniLin', password: '111111', email: 'xxx@xxx.com' },
 ]
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
+  constructor(private readonly appService: AppService) { }
+  
   @Inject(JwtService)
   private jwtService: JwtService
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  /* get 测试 */
+  @Get('getTest')
+  getTest(@Query() query: any) {
+    return {
+      code: 0,
+      data: {
+        userName: "uni-lin",
+        userId: "sfc151512135155",
+        accessToken: "sd15f1as15d61as1fd5",
+        refreshToken: "1s5d1f51as5df61a5f5d16",
+        query,
+      },
+      msg: 'success',
+    }
   }
 
+  /* post 测试 */
+  @Post('postTest')
+  postTest(@Query() query: any, @Body() data: Body) {
+    return {
+      code: 0,
+      data: {
+        userName: "uni-lin",
+        userId: "sfc151512135155",
+        accessToken: "sd15f1as15d61as1fd5",
+        refreshToken: "1s5d1f51as5df61a5f5d16",
+        data,
+        query,
+      },
+      msg: 'success',
+    }
+  }
+
+  /* 登录接口，获取 token */
   @Post('login')
   login(@Body() userDto: UserDto) {
     const user = users.find(item => item.username === userDto.username);
@@ -57,8 +85,9 @@ export class AppController {
     };
   }
 
-  @Get('list')
-  aaa(@Req() req: Request) {
+  /* 获取用户信息 */
+  @Get('userInfo')
+  getUserInfo(@Req() req: Request) {
     const authorization = req.headers['authorization'];
 
     if (!authorization) {
@@ -82,6 +111,7 @@ export class AppController {
     }
   }
 
+  /* 刷新 token */
   @Get('refresh')
   refresh(@Query('refreshToken') token: string) {
     try {
