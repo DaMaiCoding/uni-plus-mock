@@ -2,6 +2,7 @@ import { Request, BadRequestException, Body, Controller, Get, Inject, Post, Req,
 import { AppService } from './app.service';
 import { UserDto } from './user.dto';
 import { JwtService } from '@nestjs/jwt';
+import axios from 'axios';
 
 const users = [
   { username: 'uniLin', password: '111111', email: 'xxx@xxx.com' },
@@ -143,6 +144,12 @@ export class AppController {
     } catch (e) {
       throw new UnauthorizedException('token 失效，请重新登录');
     }
+  }
+
+  /* 获取测试列表 */
+  @Get('testList')
+  async getTestList(@Query() query: any) {
+    return this.appService.getList(query)
   }
 
 }
