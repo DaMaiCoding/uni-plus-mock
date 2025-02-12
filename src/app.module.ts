@@ -6,7 +6,7 @@ import { JwtModule } from '@nestjs/jwt';
 @Module({
   imports: [
     JwtModule.register({
-      secret: 'uni-lin'
+      secret: 'uni-plus'
     })
   ],
   controllers: [AppController],

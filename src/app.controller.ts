@@ -21,7 +21,7 @@ export class AppController {
     return {
       code: 0,
       data: {
-        userName: "uni-lin",
+        userName: "uni-plus",
         userId: "sfc151512135155",
         accessToken: "sd15f1as15d61as1fd5",
         refreshToken: "1s5d1f51as5df61a5f5d16",
@@ -31,13 +31,24 @@ export class AppController {
     }
   }
 
+  @Get('longRequest')
+  async longRequest() {
+    /* 延迟 3s 返回数据 */
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const data = { message: '这是延迟 3 秒后返回的数据' };
+        resolve(data);
+      }, 3000);
+    });
+  }
+    
   /* post 测试 */
   @Post('postTest')
   postTest(@Query() query: any, @Body() data: Body) {
     return {
       code: 0,
       data: {
-        userName: "uni-lin",
+        userName: "uni-plus",
         userId: "sfc151512135155",
         accessToken: "sd15f1as15d61as1fd5",
         refreshToken: "1s5d1f51as5df61a5f5d16",
