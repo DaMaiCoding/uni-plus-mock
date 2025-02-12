@@ -1,16 +1,18 @@
-# uni-lin-mock
+# 🦈 uni-plus-mock
 
-## 介绍
+## 👋 项目简介
 
-uni-lin 的模块数据服务
+基于 `nestjs` 开发的 `mock` 数据后端服务
 
-## 安装
+为 `uni-plus` 提供 `mock` 数据进行测试，无需安装 `mysql` 等环境
+
+## 🍇 依赖安装
 
 ```bash
 pnpm i
 ```
 
-## 使用
+## 🍕 运行使用
 
 ```bash
 pnpm start:dev
