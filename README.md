@@ -17,3 +17,8 @@ pnpm i
 ```bash
 pnpm start:dev
 ```
+
+## 🔗 其他
+
+- [uni-plus 模板 (gitee)](https://gitee.com/DaMaiCoding/uni-plus)
+- [uni-plus 模板 (github)](https://github.com/DaMaiCoding/uni-plus)
